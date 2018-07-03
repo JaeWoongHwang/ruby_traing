@@ -89,4 +89,134 @@ Reference and copyright by 'Perfect Ruby', Ruby suppoters
 
 ### Part2 : 루비 기초
 
+> **Example code**
+
+~~~ruby
+def hello(names)
+	names.each do |name|
+		puts "HELLO, #{name.upcase}"
+	end
+end
+
+rubies = ['MRI', 'jruby', 'rubinius']
+~~~
+
+
+
 > **메소드 정의**
+
+메소드 정의는 def 키워드를 이용해서 다음과 같이 기술한다.
+
+~~~ruby
+def 메소드명(인수)...end
+~~~
+
+
+
+변수 대입은 다음과 같이 기술한다.
+
+~~~ruby
+변수명 = 식
+rubies = ['MRI', 'jruby', 'rubinius]
+~~~
+
+
+
+- 문자열 작은 따옴표 vs 큰 따옴표
+
+  문자열은 작은 따옴표나 큰 따옴표 중 어느 것을 사용해도 되나 차이점이 있다. 큰 따옴표를 사용한 문자열에는 #{...}로 감싸는 루비 코드를 포함시킬 수 있다. 
+
+  
+
+> **메소드 호출**
+
+메소드 호출은 다음과 같은 형식으로 기술한다,
+
+~~~ruby
+리시버(reciever).메소드명
+name.space
+~~~
+
+
+
+~~~ruby
+names.each do |name|
+	puts "HELLO, #{name.upcase}
+end
+~~~
+
+변수 names를 리시버로 해서 each라는 이름의 메소드를 호출한다.
+루비는 배열의 반복이나 루프를 표현할 때 for 같은 제어구조보다 이런 메소드 호출 방식을 자주 사용한다. 
+
+
+
+> **블록**
+
+블록은 처리를 하나의 단위로 묶은 것으로 메소드 호출 시 한번만 지정할 수 있는 인수의 일종이다. 
+블록을 표현하는 기법은 다음과 같다.
+
+~~~ruby
+do...end / {}
+names.each {|name|
+	puts "HELLO, #{name.upcase}
+}
+~~~
+
+{}를 사용한 기법과 do...end를 사용한 기법은 우선순위에서 차이가 난다.
+
+
+
+> **톱 레벨**
+
+톱 레벨로 정의된 메소드는 전역 서브 루틴처럼 사용할 수 있으며 다음과 같은 특징을 가진다.
+
+- 메소드 호출 시 리시버를 기술하지 않는다.
+- 함수처럼 어디서든(전역) 호출할 수 있다.(극히 일부는 제외)
+
+
+
+> **메소드 정의와 반환 값**
+
+메소드 반환 값은 해당 메소드 내에서 마지막으로 평가되는 식의 결과 값이다. 때문에 return을 기술하지 않아도 된다.
+
+~~~ruby
+def add(a, b)
+	a + b
+end
+~~~
+
+처리 도중에 메소드를 호출한 곳으로 돌아가려면 return을 기술한다. return 값을 부여한 경우는 그 값이 반환 값이 된다.
+
+~~~ruby
+def add(a, b)
+	return a + b
+	
+	puts '이 문자열은 출력되지 않는다.'
+end
+
+add(1,1)    결과값 => 2
+~~~
+
+
+
+> 줄
+
+식과 식은 줄바꿈으로 구분하므로 세미콜론을 기술할 필요가 없다. 하지만 여러 식을 한줄에 기술하고 싶은 경우에는 세미콜론으로 구분한다.
+
+~~~ruby
+name = 'ruby'; puts(name.space)
+
+결과값 => 'RUBY' 출력
+~~~
+
+
+
+> **스크립트 인코딩**
+
+~~~ruby
+# config : utf-8
+# encoding : utf-8
+# -*- coding : utf-8
+# vim: set fileencoding=utf-8
+~~~
+
