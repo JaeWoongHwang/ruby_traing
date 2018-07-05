@@ -87,7 +87,7 @@ Reference and copyright by 'Perfect Ruby', Ruby suppoters
 
 
 
-### Part2 : 루비 기초
+### Part 2 : 루비 기초
 
 > **Example code**
 
@@ -219,4 +219,131 @@ name = 'ruby'; puts(name.space)
 # -*- coding : utf-8
 # vim: set fileencoding=utf-8
 ~~~
+
+
+
+> 변수와 상수
+
+변수는 scope에 따라 종류를 구분
+
+- 지역변수 (Local variable)
+
+  지역변수는 참조 가능 범위가 가장 좁은 종류의 변수다. 지역 변수명은 첫 슬자를 소문자 영오 또는 언더바(_)를 사용해야 한다.
+  
+  지역변수는 다음과 같은 스코프를 가진다.
+
+  - 블록
+  - 메소드 정의
+  - 클래스/모듈 정의
+  - 톱 레벨
+
+- 전역변수(Global variable)
+  전역 변수명은 $로 시작해야 한다.
+
+  ~~~ruby
+  $foobar = 'foobar'
+  $undifined # => nil 
+  ~~~
+
+- 상수(Constant)
+  정해진 값을 다룰 때는 상수를 이용하는데, 상수명은 영문 대문자로 시작해야 한다.  상수는 대입식을 이용해서 정의한다.
+
+  ~~~ruby
+  FOO_BAR = 'bar'
+  
+  상수 대입은 한 번만 해야 하지만, 정의가 완료된 상수에 다시 대입하는 것이 가능하다.
+  
+  FOO_BAR = 'bar'
+  FOO_BAR = 'foo'
+  ~~~
+
+  상수를 재정의 하는 것은 가급적 피하는 게 좋다. 상수에 다시 값을 대입하면 경고메시지가 출력되기 때문이다.
+
+  또한 메소드 안에서 상수를 정의할 수는 없다.
+
+
+
+> **조건 분기와 진릿값**
+
+루비에서는 false와 nil 이외의 모든 값은 참으로 취급한다.
+
+~~~ruby
+n = 2
+if n.zero?
+	puts '0이었다'
+elsif n.even?
+	puts '짝수였다'
+elsif n.odd?
+	puts '홀수였다'
+end
+~~~
+
+
+
+> **식**
+
+루비 프로그램의 대부분은 어떤 값을 반환하는 식으로 이루어진다. 변수 대입은 오른쪽 값을 반환하고, if는 마지막으로 평가한 값을 반환한다.
+
+
+
+> **클래스**
+
+클래스는 객체의 동작을 정의하기 위한 것이고, 모든 객체는 클래스의 인스턴스다.
+
+
+
+> **클래스 정의**
+
+새로운 클래스를 정의하려면 class 키워드를 사용한다. 클래스명은 영문 대문자로 시작해야 한다.
+
+~~~ruby
+class Myclass
+	def hello
+		puts "Hello, My object!"
+	end
+end
+~~~
+
+ 클래스로부터 인스턴스를 생성하려면 다음과 같이 기술한다.
+
+~~~ruby
+클래스명.new
+
+my_object = Myclass.new
+my_objecy.hello
+~~~
+
+
+
+> **인스턴스 변수**
+
+인스턴스 내에서만 참조할 수 있는 변수를 인스턴스 변수라고 하는데, 이를 사용해서 객체의 상태를 저장할 수 있다. 인스턴스 변수는 @로 시작하는 이름을 사용한다.
+
+~~~ruby
+class Ruler
+	def length=(val)
+    	@length = val
+    end
+    
+    def length
+    	@length
+    end
+end
+
+ruler = Ruler.new
+
+ruler.length = 30
+ruler.length
+~~~
+
+루비에서는 인스턴스 변수에 대입하는 메소드 이름 끝에 등호 '='를 붙인다.
+실제로 인스턴스 변수에 접근하기 위한 메소드로 attr_accessor를 이용한다. 다음과 같이 'attr_accessor :인스턴스 변수명' 형식으로 기술하면 자동으로 Ruler#length = 라는 인스턴스 변수가 정의된다.
+
+~~~ruby
+class Ruler
+	attr_accessor :length
+end
+~~~
+
+
 
