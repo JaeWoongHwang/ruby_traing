@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Free Board</title>
+  </head>
+    <body>
+      <h2>Please write text</h2>
+      <form>
+        <div class="form-group">
+                <label for="exampleInputEmail1">Title</label>
+                <input type="text" class="form-control" name = "title" id="title" aria-describedby="emailHelp" placeholder="Enter title">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Content</label>
+                <input type="text" class="form-control" name = "content" id="content" placeholder="Enter text">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+     </form>
+
+        <% @posts.each do |post| %>
+            <div class="card">
+              <div class="card-body">
+                Title : <%= post.title %><br>
+                Content : <%= post.body %><br>
+              </div>
+            </div>
+        <% end %>
+</body>
+</html>
